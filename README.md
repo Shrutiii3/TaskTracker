@@ -11,3 +11,7 @@ TaskTracker is a dynamic Activity Manager web application aimed at enhancing tas
 - Database: PostgreSQL
 - Frontend: HTML, CSS, EJS (Embedded JavaScript templates)
 - Other Tools: Git for version control, npm for package management
+## ScreenShots
+![task1](https://github.com/Shrutiii3/TaskTracker/assets/124484769/05e5b576-6d8d-4367-a7b1-f9c77436b5e7)
+
+![task2](https://github.com/Shrutiii3/TaskTracker/assets/124484769/05bb992f-c826-4eee-a693-e6b899439dea)
