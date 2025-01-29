@@ -9,7 +9,7 @@ const app = express();
 const port = 3000;
 env.config();
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+//const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 
 const db = new pg.Client({
@@ -23,12 +23,8 @@ db.connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
 
-// Set EJS as the view engine
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
 let op = "";
 let items = [
@@ -46,9 +42,7 @@ app.post("/choose", async (req, res) => {
   op = req.body.choosen;
   res.redirect(`/list/${op}`);
 });
-app.post("/refresh", async (req,res)=>{
-  res.render("index.ejs");
-});
+
 // Route to display items from selected category
 app.get("/list/:op", async (req, res) => {
   const op = req.params.op; // Get op from URL parameter
