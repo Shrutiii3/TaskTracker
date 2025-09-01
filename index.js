@@ -39,7 +39,7 @@ app.get("/", async (req, res) => {
 
 // Route to handle POST request to choose a category
 app.post("/choose", async (req, res) => {
-  op = req.body.choosen;
+  const op = req.body.choosen;
   res.redirect(`/list/${op}`);
 });
 
@@ -62,6 +62,7 @@ app.get("/list/:op", async (req, res) => {
 // Route to add new item to selected category
 app.post("/add", async (req, res) => {
   const item = req.body.newItem;
+  const op = req.body.op;
   try {
     await db.query(`INSERT INTO ${op} (title) VALUES ($1)`, [item]);
     res.redirect(`/list/${op}`);
@@ -75,6 +76,7 @@ app.post("/add", async (req, res) => {
 app.post("/edit", async (req, res) => {
   const item = req.body.updatedItemTitle;
   const id = req.body.updatedItemId;
+  const op = req.body.op;
   try {
     await db.query(`UPDATE ${op} SET title = ($1) WHERE id = $2`, [item, id]);
     res.redirect(`/list/${op}`);
@@ -87,6 +89,7 @@ app.post("/edit", async (req, res) => {
 // Route to delete item from selected category
 app.post("/delete", async (req, res) => {
   const id = req.body.deleteItemId;
+  const op = req.body.op;
   try {
     await db.query(`DELETE FROM ${op} WHERE id = $1`, [id]);
     res.redirect(`/list/${op}`);
