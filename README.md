@@ -1,4 +1,5 @@
 # Task Tracker
+![CI](https://github.com/Shrutiii3/TaskTracker/actions/workflows/ci.yml/badge.svg)
 ## Overview
 TaskTracker is a dynamic Activity Manager web application aimed at enhancing task management by allowing users to group tasks into different categories such as Academics, Books, and Chores. It provides a user-friendly interface where tasks can be added, edited, and deleted seamlessly within each category.Each category operates independently, facilitating focused task organization tailored to different aspects of users' lives. TaskTracker leverages modern web technologies including Express.js, EJS templating, PostgreSQL for database management, and integrates responsive design principles for optimal usability across various devices. This project demonstrates proficiency in full-stack web development, database management, and user interface design
 ## Features
@@ -15,3 +16,21 @@ TaskTracker is a dynamic Activity Manager web application aimed at enhancing tas
 ![task1](https://github.com/Shrutiii3/TaskTracker/assets/124484769/05e5b576-6d8d-4367-a7b1-f9c77436b5e7)
 
 ![task2](https://github.com/Shrutiii3/TaskTracker/assets/124484769/05bb992f-c826-4eee-a693-e6b899439dea)
+
+## Running with Docker
+This project is containerized using Docker with a Node.js base image.
+
+Build the image:
+```bash
+docker build -t task-tracker .
+```
+
+Run the container:
+```bash
+docker run -p 3000:3000 task-tracker
+```
+Visit `localhost:3000` in your browser.
+
+Note: you'll need your own `.env` file with database credentials for the app to connect to PostgreSQL, since `.env` is gitignored and not included in the image.
+## CI/CD
+A GitHub Actions workflow automatically validates the Docker build on every push and pull request to `main`. See `.github/workflows/ci.yml`.
